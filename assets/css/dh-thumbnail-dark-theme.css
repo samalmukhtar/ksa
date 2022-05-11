@@ -1,0 +1,21 @@
+.dh-thumbnail {
+  padding: 0px;
+}
+
+.dh-thumbnail-caption {
+  background-color: #2A2A2A;
+}
+
+.dh-thumbnail-caption h3 {
+  color: rgb(181,181,181);
+  font-weight: lighter;
+}
+
+.dh-thumbnail-caption p {
+  color: white;
+}
+
+.dh-thumbnail img {
+  width: 100%;
+}
+
