@@ -16,6 +16,13 @@
             overflow: hidden;
         }
 
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
         h1, h2, h3, h4, h5 {
             color: #0f0;
             text-shadow: 0 0 10px #0f0, 0 0 20px #0f0;
@@ -25,6 +32,27 @@
             background-color: #111;
             padding: 20px;
             border-radius: 10px;
+        }
+
+        .contact-section {
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        .contact-section a {
+            color: #0f0;
+            font-size: 1.2em;
+            text-decoration: none;
+            margin: 10px;
+            display: inline-block;
+        }
+
+        .contact-section a:hover {
+            color: #fff;
+        }
+
+        .whatsapp-icon {
+            font-size: 2em;
         }
 
         .comment-box {
@@ -54,33 +82,14 @@
             cursor: pointer;
             border-radius: 5px;
         }
-
-        .matrix-header {
-            font-size: 2.5em;
-            line-height: 1.2;
-        }
-
-        .matrix-bg {
-            background-image: url('assets/img/matrix-skull.jpg');
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-        }
-
-        canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: -1;
-        }
     </style>
 </head>
 
-<body class="matrix-bg">
+<body>
     <canvas id="matrix"></canvas>
 
     <header>
-        <h1 class="matrix-header">مرحباً بكم في المعلم الأكبر</h1>
+        <h1>مرحباً بكم في المعلم الأكبر</h1>
     </header>
 
     <main>
@@ -90,21 +99,22 @@
         </section>
 
         <section class="dark-bg">
-            <h2>المواضيع</h2>
-            <p>الموقع قيد التطوير حالياً. يرجى العودة لاحقاً للمزيد من التحديثات.</p>
-        </section>
-
-        <section class="dark-bg">
             <h2>التعليقات والردود</h2>
             <div class="comment-box">
                 <h3>اترك تعليقك</h3>
-                <form id="comment-form">
-                    <input type="text" id="name" placeholder="اسمك" required>
-                    <textarea rows="4" id="comment" placeholder="تعليقك" required></textarea>
+                <form>
+                    <input type="text" placeholder="اسمك" required>
+                    <textarea rows="4" placeholder="تعليقك" required></textarea>
                     <button type="submit">إرسال</button>
                 </form>
-                <div id="comments-section"></div>
             </div>
+        </section>
+
+        <section class="dark-bg contact-section">
+            <h2>تواصل معنا</h2>
+            <a href="mailto:S009KSA@GMAIL.COM">📧 S009KSA@GMAIL.COM</a>
+            <a href="tel:+966557214009">📞 966557214009</a>
+            <a href="https://wa.me/966557214009" target="_blank" class="whatsapp-icon">📱 واتساب</a>
         </section>
     </main>
 
@@ -113,43 +123,14 @@
     </footer>
 
     <script>
-        const commentsSection = document.getElementById('comments-section');
-        const commentForm = document.getElementById('comment-form');
-
-        // Function to add a comment
-        function addComment(name, text) {
-            const commentDiv = document.createElement('div');
-            commentDiv.classList.add('comment');
-            commentDiv.innerHTML = `<strong>${name}</strong>: ${text}`;
-            commentsSection.appendChild(commentDiv);
-
-            // Automatically remove the comment after 14 days
-            setTimeout(() => {
-                commentDiv.remove();
-            }, 14 * 24 * 60 * 60 * 1000); // 14 days
-        }
-
-        // Handle form submission
-        commentForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-
-            const name = document.getElementById('name').value;
-            const comment = document.getElementById('comment').value;
-
-            if (name && comment) {
-                addComment(name, comment);
-                commentForm.reset();
-            }
-        });
-
-        // Matrix falling skull effect
-        const canvas = document.getElementById('matrix');
-        const ctx = canvas.getContext('2d');
+        // Script لإضافة تأثير الحروف المتساقطة
+        const canvas = document.getElementById("matrix");
+        const ctx = canvas.getContext("2d");
 
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
 
-        const skull = "☠";
+        const skull = "☠"; // رمز الرأس العظمي
         const fontSize = 16;
         const columns = canvas.width / fontSize;
 
